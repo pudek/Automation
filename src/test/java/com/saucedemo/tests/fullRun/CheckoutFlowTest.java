@@ -16,6 +16,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.Map;
 
 public class CheckoutFlowTest {
     private WebDriver driver;
@@ -29,19 +30,23 @@ public class CheckoutFlowTest {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-features=PasswordLeakDetection");
+        options.setExperimentalOption("prefs", Map.of(
+                "credentials_enable_service", false,
+                "profile.password_manager_enabled", false,
+                "profile.password_manager_leak_detection", false
+        ));
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://www.saucedemo.com/");
 
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
-        cartPage = new CartPage(driver);
-        checkoutPage = new CheckoutPage(driver);
+        cartPage = new CartPage(driver, wait);
+        checkoutPage = new CheckoutPage(driver, wait);
 
         loginPage.login("standard_user", "secret_sauce");
         wait.until(ExpectedConditions.urlContains("inventory.html"));
     }
-
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.quit();
@@ -137,7 +142,7 @@ public class CheckoutFlowTest {
         cartPage.checkout();
         checkoutPage.fillInfo("Jane", "Doe", "12345");
 
-        checkoutPage.goToCartFromCheckoutOverview();
+        checkoutPage.cancelFromCheckoutOverview();
 
         Assert.assertTrue(driver.getCurrentUrl().contains("inventory.html"));
 
