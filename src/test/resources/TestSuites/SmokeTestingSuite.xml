@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smoke Testing Suite" verbose="1">
+    <test name="Login Smoke">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.saucedemo.tests.fullRun.Login"/>
+        </classes>
+    </test>
+
+    <test name="Checkout Smoke">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.saucedemo.tests.fullRun.CheckoutFlowTest"/>
+        </classes>
+    </test>
+</suite>

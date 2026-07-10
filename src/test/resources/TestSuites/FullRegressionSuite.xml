@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Full Regression Suite" verbose="1">
+    <test name="Login Regression">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.saucedemo.tests.fullRun.Login"/>
+        </classes>
+    </test>
+
+    <test name="Checkout Regression">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.saucedemo.tests.fullRun.CheckoutFlowTest"/>
+        </classes>
+    </test>
+    <test name="Inventory Regression">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.saucedemo.tests.fullRun.InventoryTest"/>
+        </classes>
+    </test>
+</suite>
