@@ -142,7 +142,7 @@ public class CheckoutFlowTest {
         cartPage.checkout();
         checkoutPage.fillInfo("Jane", "Doe", "12345");
 
-        checkoutPage.cancelFromCheckoutOverview();
+        checkoutPagse.cancelFromCheckoutOverview();
 
         Assert.assertTrue(driver.getCurrentUrl().contains("inventory.html"));
 
