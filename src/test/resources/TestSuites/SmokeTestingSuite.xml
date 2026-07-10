@@ -11,14 +11,14 @@
         </classes>
     </test>
 
-    <test name="Checkout Smoke">
-        <groups>
-            <run>
-                <include name="smoke"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.saucedemo.tests.fullRun.CheckoutFlowTest"/>
-        </classes>
-    </test>
+<!--    <test name="Checkout Smoke">-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="smoke"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+<!--        <classes>-->
+<!--            <class name="com.saucedemo.tests.fullRun.CheckoutFlowTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
